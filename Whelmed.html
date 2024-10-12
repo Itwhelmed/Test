@@ -8,7 +8,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-image: url('background.jpg');
+            background-image: url('background.jpg'); /* Use your background image */
             background-size: cover;
             background-position: center;
             display: flex;
@@ -16,7 +16,26 @@
             align-items: center;
             transition: background-color 0.5s ease;
             overflow-x: hidden;
-            position: relative;
+            position: relative; /* For absolutely positioned elements */
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2000; /* On top of everything */
+            display: none; /* Hidden initially */
+        }
+
+        .loader.active {
+            display: block; /* Show when active */
+        }
+
+        .loader img {
+            width: 100px; /* Adjust as needed */
+            height: auto;
         }
 
         /* Navbar styles */
@@ -25,13 +44,14 @@
             top: 0;
             left: 0;
             right: 0;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.9);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            padding: 10px 20px;
+            padding: 10px 20px; /* Reduced padding */
             z-index: 1000;
+            transition: all 0.5s ease;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            align-items: center; /* Align items vertically centered */
+            justify-content: space-between; /* Space out logo and links */
             flex-wrap: wrap;
         }
 
@@ -50,65 +70,26 @@
         .navbar img {
             height: 40px;
             vertical-align: middle;
-            margin-right: 5px;
+            margin-right: 5px; /* Reduced margin */
         }
 
         /* Whelmed text style */
         .navbar .whelmed {
             font-size: 24px;
             font-weight: bold;
-            color: #FF4500;
+            color: #FF4500; /* Bright color to stand out */
             margin-left: 5px;
             padding: 5px 10px;
-            background-color: rgba(255, 69, 0, 0.1);
-            border-radius: 5px;
+            background-color: rgba(255, 69, 0, 0.1); /* Light background to make it pop */
+            border-radius: 5px; /* Rounded corners */
         }
 
-        /* Menu Button (Three Dots) */
-        .menu-btn {
-            display: none;
-            font-size: 30px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            outline: none;
-            color: #007BFF;
+        /* Space between Whelmed and other links */
+        .navbar .nav-space {
+            margin-right: auto;
         }
 
-        /* Full menu hidden for mobile */
-        .navbar-links {
-            display: flex;
-        }
-
-        @media (max-width: 768px) {
-            .navbar-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                background-color: rgba(255, 255, 255, 0.95);
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            }
-
-            .navbar-links a {
-                padding: 10px;
-                text-align: center;
-                width: 100%;
-                border-top: 1px solid #eaeaea;
-            }
-
-            .menu-btn {
-                display: block;
-            }
-
-            .navbar.active .navbar-links {
-                display: flex;
-            }
-        }
-
-        /* Container styles (example for the rest of the page) */
+        /* Main bubbles */
         .container {
             position: relative;
             width: 100%;
@@ -118,34 +99,215 @@
             align-items: center;
             margin-top: 100px;
         }
+
+        .bubble {
+            background-image: url('pngwing.com.png'); /* Main bubble background */
+            background-size: cover;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            position: absolute;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            cursor: pointer;
+        }
+
+        .bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .outer-bubble {
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background-image: url('pngwing.com.png');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Bubbles for Whelmed support services */
+        .bubble1 { width: 160px; height: 160px; left: 50%; top: 40%; transform: translate(-50%, -50%); animation: hover 4s ease-in-out infinite; }
+        .bubble2 { width: 140px; height: 140px; left: 70%; top: 60%; transform: translate(-50%, -50%); animation: hover 5s ease-in-out infinite; }
+        .bubble3 { width: 120px; height: 120px; left: 55%; top: 80%; transform: translate(-50%, -50%); animation: hover 6s ease-in-out infinite; }
+        .bubble4 { width: 180px; height: 180px; left: 30%; top: 50%; transform: translate(-50%, -50%); animation: hover 7s ease-in-out infinite; }
+        .bubble5 { width: 100px; height: 100px; left: 20%; top: 35%; transform: translate(-50%, -50%); animation: hover 8s ease-in-out infinite; }
+
+        @keyframes hover {
+            0% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-10px); }
+            100% { transform: translate(-50%, -50%) translateY(0); }
+        }
+
+        /* Floating background bubbles */
+        .floating-bubble {
+            position: absolute;
+            border-radius: 50%;
+            background-image: url('pngwing.com.png'); /* Match main bubble style */
+            background-size: cover;
+            transition: transform 0.2s ease; /* Smooth popping effect */
+            cursor: pointer; /* Makes it clickable */
+            pointer-events: auto;
+        }
+
+        .floating-bubble:nth-child(1) { width: 50px; height: 50px; top: 10%; left: 15%; animation: float 12s infinite ease-in-out; }
+        .floating-bubble:nth-child(2) { width: 30px; height: 30px; top: 20%; left: 70%; animation: float 14s infinite ease-in-out; }
+        .floating-bubble:nth-child(3) { width: 80px; height: 80px; top: 60%; left: 30%; animation: float 16s infinite ease-in-out; }
+        .floating-bubble:nth-child(4) { width: 100px; height: 100px; top: 50%; left: 80%; animation: float 18s infinite ease-in-out; }
+        .floating-bubble:nth-child(5) { width: 60px; height: 60px; top: 30%; left: 40%; animation: float 10s infinite ease-in-out; }
+        .floating-bubble:nth-child(6) { width: 40px; height: 40px; top: 70%; left: 20%; animation: float 15s infinite ease-in-out; }
+        .floating-bubble:nth-child(7) { width: 70px; height: 70px; top: 80%; left: 60%; animation: float 12s infinite ease-in-out; }
+        .floating-bubble:nth-child(8) { width: 90px; height: 90px; top: 40%; left: 10%; animation: float 14s infinite ease-in-out; }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-50px) translateX(30px); }
+            100% { transform: translateY(0) translateX(0); }
+        }
+
+        /* Blog Section Styles */
+        #blog {
+            width: 80%;
+            margin: 50px auto;
+            text-align: left;
+        }
+
+        .blog-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .blog-post {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-post h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .blog-date {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .blog-content {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .read-more {
+            font-weight: bold;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            .outer-bubble {
+                width: 90vw;
+                height: 90vw;
+            }
+            .bubble {
+                font-size: 12px; /* Adjust text size for smaller screens */
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="loader active">
+        <img src="loader.gif" alt="Loading..."> <!-- Loading GIF -->
+    </div>
 
-    <!-- Navbar -->
     <div class="navbar">
-        <a href="index.html"><img src="logo.jpeg" alt="Whelmed Logo"></a>
-        <span class="whelmed">Whelmed</span>
-        <button class="menu-btn" onclick="toggleMenu()">⋮</button>
-        <div class="navbar-links">
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="appointment.html">Appointment</a>
-            <a href="blog.html">Blog</a>
-            <a href="contact.html">Contact</a>
+        <div class="nav-space">
+            <a href="#"><img src="logo.png" alt="Whelmed Logo">Whelmed</a> <!-- Logo with Whelmed text -->
+        </div>
+        <div>
+            <a href="#services">Services</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
         </div>
     </div>
 
-    <!-- Bubble Container (Example content) -->
     <div class="container">
-        <!-- Your content here -->
-        <p>Welcome to Whelmed!</p>
+        <div class="outer-bubble">
+            <div class="bubble bubble1">Tutoring</div>
+            <div class="bubble bubble2">Workshops</div>
+            <div class="bubble bubble3">Resources</div>
+            <div class="bubble bubble4">Support Groups</div>
+            <div class="bubble bubble5">Counseling</div>
+        </div>
+        
+        <!-- Floating Bubbles -->
+        <div class="floating-bubble" onclick="popBubble(this)"></div>
+        <div class="floating-bubble" onclick="popBubble(this)"></div>
+        <div class="floating-bubble" onclick="popBubble(this)"></div>
+        <div class="floating-bubble" onclick="popBubble(this)"></div>
+        <div class="floating-bubble" onclick="popBubble(this)"></div>
+        <div class="floating-bubble" onclick="popBubble(this)"></div>
+        <div class="floating-bubble" onclick="popBubble(this)"></div>
+        <div class="floating-bubble" onclick="popBubble(this)"></div>
+    </div>
+
+    <div id="blog">
+        <h2>Latest Blog Posts</h2>
+        <div class="blog-container">
+            <div class="blog-post">
+                <h3>Understanding Mental Health</h3>
+                <div class="blog-date">October 1, 2024</div>
+                <div class="blog-content">
+                    Learn about the importance of mental health and how to take care of it...
+                </div>
+                <a class="read-more" href="#">Read more</a>
+            </div>
+            <div class="blog-post">
+                <h3>Effective Study Techniques</h3>
+                <div class="blog-date">October 5, 2024</div>
+                <div class="blog-content">
+                    Discover study techniques that can help you improve your learning process...
+                </div>
+                <a class="read-more" href="#">Read more</a>
+            </div>
+            <div class="blog-post">
+                <h3>Managing Stress During Exams</h3>
+                <div class="blog-date">October 10, 2024</div>
+                <div class="blog-content">
+                    Tips on how to manage stress effectively while preparing for exams...
+                </div>
+                <a class="read-more" href="#">Read more</a>
+            </div>
+        </div>
     </div>
 
     <script>
-        function toggleMenu() {
-            const navbar = document.querySelector('.navbar');
-            navbar.classList.toggle('active');
+        // Loading animation
+        window.onload = function() {
+            document.querySelector('.loader').classList.remove('active');
+        };
+
+        function popBubble(bubble) {
+            bubble.style.transform = 'scale(0)';
+            setTimeout(() => {
+                bubble.style.display = 'none'; // Hide bubble after popping
+            }, 300);
         }
     </script>
 </body>
