@@ -11,12 +11,8 @@
             background-image: url('background.jpg'); /* Use your background image */
             background-size: cover;
             background-position: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             transition: background-color 0.5s ease;
             overflow-x: hidden;
-            position: relative; /* For absolutely positioned elements */
         }
 
         /* Loading Animation */
@@ -25,7 +21,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 2000; /* On top of everything */
+            z-index: 2000;
             display: none; /* Hidden initially */
         }
 
@@ -46,9 +42,8 @@
             right: 0;
             background-color: rgba(255, 255, 255, 0.9);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            padding: 10px 20px; /* Adjust padding */
+            padding: 10px 20px;
             z-index: 1000;
-            transition: all 0.5s ease;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -86,17 +81,14 @@
 
         /* Main bubbles */
         .container {
-            position: relative;
-            width: 100%;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-top: 80px; /* Space for navbar */
             flex-wrap: wrap;
+            justify-content: center;
+            padding-top: 80px;
         }
 
         .bubble {
-            background-image: url('pngwing.com.png'); /* Main bubble background */
+            background-image: url('pngwing.com.png');
             background-size: cover;
             border-radius: 50%;
             display: flex;
@@ -105,11 +97,10 @@
             text-align: center;
             color: black;
             font-weight: bold;
-            position: relative;
-            margin: 15px;
+            margin: 10px;
             width: 120px;
             height: 120px;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
         }
 
@@ -168,15 +159,21 @@
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
+                padding: 10px;
             }
 
             .navbar a {
                 margin: 5px 0;
             }
 
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
             .bubble {
-                width: 80px;
-                height: 80px;
+                width: 100px;
+                height: 100px;
             }
         }
 
@@ -189,13 +186,9 @@
                 height: 30px;
             }
 
-            .container {
-                padding-top: 100px; /* Extra space for smaller devices */
-            }
-
             .bubble {
-                width: 60px;
-                height: 60px;
+                width: 80px;
+                height: 80px;
                 font-size: 12px;
             }
         }
