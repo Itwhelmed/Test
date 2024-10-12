@@ -8,7 +8,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-image: url('background.jpg');
+            background-image: url('background.jpg'); /* Use your background image */
             background-size: cover;
             background-position: center;
             display: flex;
@@ -16,7 +16,26 @@
             align-items: center;
             transition: background-color 0.5s ease;
             overflow-x: hidden;
-            position: relative;
+            position: relative; /* For absolutely positioned elements */
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2000; /* On top of everything */
+            display: none; /* Hidden initially */
+        }
+
+        .loader.active {
+            display: block; /* Show when active */
+        }
+
+        .loader img {
+            width: 100px; /* Adjust as needed */
+            height: auto;
         }
 
         /* Navbar styles */
@@ -27,11 +46,12 @@
             right: 0;
             background-color: rgba(255, 255, 255, 0.8);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            padding: 10px 20px;
+            padding: 10px 20px; /* Reduced padding */
             z-index: 1000;
             transition: all 0.5s ease;
             display: flex;
-            align-items: center;
+            align-items: center; /* Align items vertically centered */
+            justify-content: space-between; /* Distribute space */
             flex-wrap: wrap;
         }
 
@@ -50,74 +70,33 @@
         .navbar img {
             height: 40px;
             vertical-align: middle;
-            margin-right: 5px;
+            margin-right: 5px; /* Reduced margin */
         }
 
+        /* Whelmed text style */
         .navbar .whelmed {
             font-size: 24px;
             font-weight: bold;
-            color: #FF4500;
+            color: #FF4500; /* Bright color to stand out */
             margin-left: 5px;
             padding: 5px 10px;
-            background-color: rgba(255, 69, 0, 0.1);
-            border-radius: 5px;
-        }
-
-        .navbar .nav-space {
-            margin-right: auto;
-        }
-
-        /* Navbar toggle for mobile */
-        .navbar-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            margin-left: auto;
-        }
-
-        .navbar-menu {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .navbar a {
-                display: none;
-            }
-
-            .navbar a.mobile-link {
-                display: block;
-                padding: 10px 0;
-                width: 100%;
-            }
-
-            .navbar-toggle {
-                display: block;
-            }
-
-            .navbar.expanded .navbar a {
-                display: block;
-            }
+            background-color: rgba(255, 69, 0, 0.1); /* Light background to make it pop */
+            border-radius: 5px; /* Rounded corners */
         }
 
         /* Main bubbles */
         .container {
             position: relative;
             width: 100%;
-            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 100px;
+            padding-top: 120px; /* Space for navbar */
+            flex-wrap: wrap; /* Ensure wrapping on smaller screens */
         }
 
         .bubble {
-            background-image: url('pngwing.com.png');
+            background-image: url('pngwing.com.png'); /* Main bubble background */
             background-size: cover;
             border-radius: 50%;
             display: flex;
@@ -126,7 +105,10 @@
             text-align: center;
             color: black;
             font-weight: bold;
-            position: absolute;
+            position: relative;
+            margin: 10px;
+            width: 120px;
+            height: 120px;
             transition: transform 0.5s ease, box-shadow 0.5s ease;
             cursor: pointer;
         }
@@ -136,37 +118,27 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
 
-        .outer-bubble {
-            width: 600px;
-            height: 600px;
+        /* Floating background bubbles */
+        .floating-bubble {
+            position: absolute;
             border-radius: 50%;
-            background-image: url('pngwing.com.png');
+            background-image: url('pngwing.com.png'); /* Match main bubble style */
             background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
+            transition: transform 0.2s ease; /* Smooth popping effect */
+            cursor: pointer; /* Makes it clickable */
+            pointer-events: auto;
         }
 
-        /* Responsive bubbles */
-        @media (max-width: 768px) {
-            .outer-bubble {
-                width: 80vw;
-                height: 80vw;
-            }
+        .floating-bubble:nth-child(1) { width: 50px; height: 50px; top: 10%; left: 15%; animation: float 12s infinite ease-in-out; }
+        .floating-bubble:nth-child(2) { width: 30px; height: 30px; top: 20%; left: 70%; animation: float 14s infinite ease-in-out; }
 
-            .bubble {
-                font-size: 12px;
-            }
-
-            .bubble1 { width: 90px; height: 90px; }
-            .bubble2 { width: 80px; height: 80px; }
-            .bubble3 { width: 70px; height: 70px; }
-            .bubble4 { width: 100px; height: 100px; }
-            .bubble5 { width: 60px; height: 60px; }
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-50px) translateX(30px); }
+            100% { transform: translateY(0) translateX(0); }
         }
 
-        /* Blog Section */
+        /* Blog Section Styles */
         #blog {
             width: 90%;
             margin: 50px auto;
@@ -211,67 +183,64 @@
             text-decoration: underline;
         }
 
+        /* Responsive Styles */
         @media (max-width: 768px) {
-            .blog-container {
-                padding: 10px;
+            .navbar {
+                flex-direction: column;
             }
 
-            .blog-post {
-                padding: 15px;
+            .bubble {
+                width: 80px;
+                height: 80px;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <img src="loading.gif" alt="Loading...">
+    </div>
+
+    <!-- Navbar -->
     <div class="navbar" id="navbar">
         <a href="index.html"><img src="logo.jpeg" alt="Whelmed Logo"></a>
         <span class="whelmed">Whelmed</span>
-        <span class="nav-space"></span>
-        <span class="navbar-toggle" onclick="toggleNavbar()">☰</span>
-        <div class="navbar-menu">
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="appointment.html">Appointment</a>
-            <a href="blog.html">Blog</a>
-            <a href="contact.html">Contact</a>
-        </div>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="appointment.html">Appointment</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
     </div>
 
+    <!-- Bubble Container -->
     <div class="container">
-        <div class="outer-bubble">
-            <div class="bubble bubble1" onclick="location.href='services.html';">Counseling</div>
-            <div class="bubble bubble2" onclick="location.href='services.html';">Academic Support</div>
-            <div class="bubble bubble3" onclick="location.href='services.html';">Career Guidance</div>
-            <div class="bubble bubble4" onclick="location.href='services.html';">Mental Health</div>
-            <div class="bubble bubble5" onclick="location.href='services.html';">Tutoring</div>
-        </div>
+        <div class="bubble" onclick="location.href='services.html';">Counseling</div>
+        <div class="bubble" onclick="location.href='services.html';">Tutoring</div>
     </div>
 
+    <!-- Blog Section -->
     <div id="blog">
         <h2>Latest Blogs</h2>
         <div class="blog-container">
             <div class="blog-post">
                 <h3>Blog Title 1</h3>
                 <p class="blog-date">Published on October 11, 2024</p>
-                <p class="blog-content">This is a short description of the first blog. You can read more by clicking the link below.</p>
+                <p class="blog-content">This is a short description of the first blog...</p>
                 <a href="blog1.html" class="read-more">Read more...</a>
-            </div>
-
-            <div class="blog-post">
-                <h3>Blog Title 2</h3>
-                <p class="blog-date">Published on September 25, 2024</p>
-                <p class="blog-content">This is a short description of the second blog. Click the link to continue reading.</p>
-                <a href="blog2.html" class="read-more">Read more...</a>
             </div>
         </div>
     </div>
 
     <script>
-        function toggleNavbar() {
-            const navbar = document.getElementById('navbar');
-            navbar.classList.toggle('expanded');
-        }
+        document.onreadystatechange = function () {
+            if (document.readyState !== "complete") {
+                document.getElementById('loader').classList.add('active');
+            } else {
+                document.getElementById('loader').classList.remove('active');
+            }
+        };
     </script>
 </body>
 </html>
