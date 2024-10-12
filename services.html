@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Whelmed</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .services-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007BFF;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+
+        h2 {
+            color: #007BFF;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .service-item {
+            margin-bottom: 40px;
+        }
+
+        .contact {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+
+        .contact p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .floating-bubble {
+            position: absolute;
+            border-radius: 50%;
+            background-image: url('pngwing.com.png'); /* Replace with your bubble image */
+            background-size: cover;
+            pointer-events: none;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-30px) translateX(20px); }
+            100% { transform: translateY(0) translateX(0); }
+        }
+
+        @media (max-width: 768px) {
+            .services-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="services-container">
+        <h1>Our Services</h1>
+        <div class="service-item">
+            <h2>Counseling</h2>
+            <p>Our counseling services provide a safe and supportive environment for students to discuss their concerns, set goals, and develop coping strategies.</p>
+        </div>
+        <div class="service-item">
+            <h2>Academic Support</h2>
+            <p>We offer personalized tutoring sessions tailored to individual learning needs, helping students improve their academic performance in various subjects.</p>
+        </div>
+        <div class="service-item">
+            <h2>Career Guidance</h2>
+            <p>Our career guidance services assist students in exploring potential career paths, preparing resumes, and honing interview skills to ensure future success.</p>
+        </div>
+        <div class="service-item">
+            <h2>Mental Health Support</h2>
+            <p>We provide mental health resources and support to help students manage stress, anxiety, and other mental health challenges they may face.</p>
+        </div>
+        <div class="service-item">
+            <h2>Tutoring</h2>
+            <p>Our expert tutors offer one-on-one sessions in various subjects, helping students gain confidence and mastery in their studies.</p>
+        </div>
+
+        <div class="contact">
+            <h2>Get In Touch</h2>
+            <p>If you're interested in any of our services or have questions, please contact us!</p>
+            <p>Email: info@whelmed.com</p>
+            <p>Phone: (123) 456-7890</p>
+        </div>
+    </div>
+
+    <!-- Background Bubbles -->
+    <script>
+        const bubbleCount = 50; // Number of bubbles
+        const container = document.body;
+
+        for (let i = 0; i < bubbleCount; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'floating-bubble';
+            const size = Math.random() * 60 + 30; // Bubble size between 30px and 90px
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            bubble.style.top = `${Math.random() * 100}vh`;
+            bubble.style.left = `${Math.random() * 100}vw`;
+            bubble.style.animationDuration = `${Math.random() * 10 + 10}s`; // Random animation duration between 10s and 20s
+            container.appendChild(bubble);
+        }
+    </script>
+</body>
+</html>

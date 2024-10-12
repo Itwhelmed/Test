@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Whelmed</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007BFF;
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+
+        .post-form {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .post-form textarea {
+            width: 100%;
+            height: 100px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            resize: none;
+        }
+
+        .post-form button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .post-form button:hover {
+            background-color: #0056b3;
+        }
+
+        #blogPosts {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .blog-post {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-post h3 {
+            margin-top: 0;
+            color: #007BFF;
+        }
+
+        .blog-date {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .blog-content {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .post-form textarea {
+                height: 80px;
+            }
+
+            .post-form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Blog</h1>
+
+<!-- Blog Post Form -->
+<div class="post-form">
+    <h2>Upload a New Post</h2>
+    <textarea id="postContent" placeholder="Write your post..."></textarea>
+    <button onclick="uploadPost()">Submit</button>
+</div>
+
+<!-- Display Existing Posts -->
+<div id="blogPosts">
+    <h2>Existing Posts</h2>
+</div>
+
+<script>
+    const apiUrl = 'https://your-backend-url/api/blogs';
+
+    // Function to fetch and display posts
+    async function fetchPosts() {
+        const response = await fetch(apiUrl);
+        const posts = await response.json();
+        const blogPostsDiv = document.getElementById('blogPosts');
+
+        // Clear existing posts
+        blogPostsDiv.innerHTML = '<h2>Existing Posts</h2>';
+
+        posts.forEach(post => {
+            const postElement = document.createElement('div');
+            postElement.classList.add('blog-post');
+            postElement.innerHTML = `
+                <h3>${post.title || "Untitled Post"}</h3>
+                <p class="blog-date">Published on ${new Date(post.date).toLocaleDateString()}</p>
+                <p class="blog-content">${post.content}</p>
+            `;
+            blogPostsDiv.appendChild(postElement);
+        });
+    }
+
+    // Function to upload a new post
+    async function uploadPost() {
+        const content = document.getElementById('postContent').value;
+        if (!content) return alert('Please enter some content!');
+
+        const newPost = { content, date: new Date().toISOString() };
+
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newPost)
+        });
+
+        if (response.ok) {
+            document.getElementById('postContent').value = ''; // Clear the textarea
+            fetchPosts(); // Refresh the list of posts
+        } else {
+            alert('Failed to upload post');
+        }
+    }
+
+    // Fetch posts when the page loads
+    fetchPosts();
+</script>
+
+</body>
+</html>

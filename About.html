@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Whelmed</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg'); /* Updated background image */
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007BFF;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .mission, .vision {
+            margin-bottom: 40px;
+        }
+
+        .mission h2, .vision h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .team-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .team-section h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #007BFF;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .member {
+            width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .member img {
+            width: 100%;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .member h3 {
+            font-size: 20px;
+            margin-top: 10px;
+            color: #007BFF;
+        }
+
+        .member p {
+            font-size: 16px;
+        }
+
+        .testimonials {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+        }
+
+        .testimonial {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial h3 {
+            text-align: right;
+            font-weight: normal;
+            margin-top: 5px;
+        }
+
+        .contact {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+
+        .contact p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .floating-bubble {
+            position: absolute;
+            border-radius: 50%;
+            background-image: url('pngwing.com.png'); /* Replace with your bubble image */
+            background-size: cover;
+            pointer-events: none;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-30px) translateX(20px); }
+            100% { transform: translateY(0) translateX(0); }
+        }
+
+        @media (max-width: 768px) {
+            .team-members {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="about-container">
+        <h1>About Us</h1>
+        <p>
+            Welcome to Whelmed! We are dedicated to providing students with quality tutoring and educational support.
+            Our mission is to help students excel in their academic journey, offering personalized learning experiences 
+            that make a lasting impact. We believe every student has the potential to succeed, and we're here to guide 
+            them on that path.
+        </p>
+
+        <div class="mission">
+            <h2>Our Mission</h2>
+            <p>
+                At Whelmed, our mission is to offer accessible, affordable, and effective educational services to students 
+                of all backgrounds. We aim to empower learners with the knowledge and skills they need to thrive in their studies 
+                and future careers.
+            </p>
+        </div>
+
+        <div class="vision">
+            <h2>Our Vision</h2>
+            <p>
+                We envision a world where every student has the opportunity to achieve their academic goals. Through innovative 
+                learning methods, dedicated tutors, and a supportive community, we strive to create an environment where education 
+                is both enjoyable and rewarding.
+            </p>
+        </div>
+
+        <div class="team-section">
+            <h2>Meet Our Team</h2>
+            <div class="team-members">
+                <div class="member">
+                    <img src="team-member1.jpeg" alt="Lani Nieu">
+                    <h3>Lani Nieu</h3>
+                    <p>Founder & Lead Tutor</p>
+                </div>
+                <div class="member">
+                    <img src="team-member2.jpeg" alt="Susan Lee">
+                    <h3>Susan Lee</h3>
+                    <p>Science Tutor</p>
+                </div>
+                <div class="member">
+                    <img src="team-member3.jpeg" alt="Michael Johnson">
+                    <h3>Michael Johnson</h3>
+                    <p>Math Tutor</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonials">
+            <h2>What Our Students Say</h2>
+            <div class="testimonial">
+                <p>"Whelmed helped me turn my grades around! The personalized tutoring made all the difference."</p>
+                <h3>- Emily R.</h3>
+            </div>
+            <div class="testimonial">
+                <p>"The tutors at Whelmed are fantastic! They really care about their students' success."</p>
+                <h3>- Jacob T.</h3>
+            </div>
+            <div class="testimonial">
+                <p>"I couldn't have done it without Whelmed. Their support was invaluable during exam season."</p>
+                <h3>- Sarah L.</h3>
+            </div>
+        </div>
+
+        <div class="contact">
+            <h2>Get In Touch</h2>
+            <p>If you have any questions or want to learn more about our services, feel free to contact us!</p>
+            <p>Email: info@whelmed.com</p>
+            <p>Phone: (123) 456-7890</p>
+        </div>
+    </div>
+
+    <!-- Background Bubbles -->
+    <script>
+        const bubbleCount = 50; // Number of bubbles
+        const container = document.body;
+
+        for (let i = 0; i < bubbleCount; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'floating-bubble';
+            const size = Math.random() * 60 + 30; // Bubble size between 30px and 90px
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            bubble.style.top = `${Math.random() * 100}vh`;
+            bubble.style.left = `${Math.random() * 100}vw`;
+            bubble.style.animationDuration = `${Math.random() * 10 + 10}s`; // Random animation duration between 10s and 20s
+            container.appendChild(bubble);
+        }
+    </script>
+</body>
+</html>

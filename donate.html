@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate to Whelmed</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            opacity: 1;
+            transition: opacity 0.8s ease; /* Smooth transition */
+        }
+
+        /* Navbar styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar img {
+            height: 40px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .navbar .brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #007BFF;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: #0056b3;
+        }
+
+        .navbar .whelmed-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF4500;
+            margin-left: 10px;
+            letter-spacing: 1px;
+        }
+
+        .navbar .nav-links {
+            margin-left: 30px;
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 600px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+            margin-top: 100px;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: #007BFF;
+            font-size: 32px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+
+        .donate-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #28a745, #218838);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .donate-button:hover {
+            background: linear-gradient(135deg, #218838, #1e7e34);
+            transform: scale(1.08);
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #007BFF, #0056b3);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #0056b3, #004494);
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Floating bubbles using the pngwing.com.png image */
+        .bubble {
+            position: absolute;
+            background-image: url('pngwing.com.png');
+            background-size: cover;
+            background-position: center;
+            animation: bubbleAnimation 15s infinite ease-in-out;
+        }
+
+        .bubble1 { width: 120px; height: 120px; top: 20%; left: 10%; animation-duration: 12s; }
+        .bubble2 { width: 80px; height: 80px; top: 40%; left: 70%; animation-duration: 15s; }
+        .bubble3 { width: 150px; height: 150px; top: 60%; left: 25%; animation-duration: 18s; }
+        .bubble4 { width: 100px; height: 100px; top: 10%; right: 15%; animation-duration: 20s; }
+
+        @keyframes bubbleAnimation {
+            0% { transform: translateY(0); opacity: 0.6; }
+            50% { transform: translateY(-50px); opacity: 0.9; }
+            100% { transform: translateY(0); opacity: 0.6; }
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                max-width: 90%;
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .donate-button, .back-button {
+                font-size: 18px;
+                padding: 12px 30px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="brand">
+            <img src="logo.jpeg" alt="Logo">
+            <span class="whelmed-text">Whelmed</span>
+        </div>
+        <div class="nav-links">
+            <a href="Whelmed.html" class="nav-link">Home</a>
+            <a href="WhelmedBurrow.html" class="nav-link">Appointment</a>
+        </div>
+    </div>
+
+    <!-- Floating Bubbles -->
+    <div class="bubble bubble1"></div>
+    <div class="bubble bubble2"></div>
+    <div class="bubble bubble3"></div>
+    <div class="bubble bubble4"></div>
+
+    <!-- Donation Section -->
+    <div class="container">
+        <h1>Support Whelmed</h1>
+        <p>Your generous donations help us provide free classes and resources to school kids. Every little bit counts!</p>
+        <p>Please consider donating through the link below:</p>
+        <a href="https://www.paypal.com" class="donate-button">Donate Now</a>
+        <p>Thank you for your support!</p>
+        <a href="Whelmed.html" class="back-button nav-link">Back to Home</a>
+    </div>
+
+    <footer>
+        &copy; 2024 Whelmed. All rights reserved.
+    </footer>
+
+    <!-- Smooth transition script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Smooth page transition
+            const body = document.body;
+            const links = document.querySelectorAll(".nav-link");
+
+            links.forEach(link => {
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    const href = this.getAttribute("href");
+
+                    // Fade out the body
+                    body.style.opacity = 0;
+
+                    setTimeout(function() {
+                        window.location.href = href;
+                    }, 800);  // Wait for transition to complete before redirecting
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
