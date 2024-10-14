@@ -171,51 +171,6 @@
             100% { transform: translateY(0) translateX(0); }
         }
 
-        /* Blog Section Styles */
-        #blog {
-            width: 80%;
-            margin: 50px auto;
-            text-align: left;
-        }
-
-        .blog-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .blog-post {
-            background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .blog-post h3 {
-            margin-top: 0;
-            color: #333;
-        }
-
-        .blog-date {
-            font-size: 12px;
-            color: #999;
-        }
-
-        .blog-content {
-            font-size: 14px;
-            color: #555;
-        }
-
-        .read-more {
-            font-weight: bold;
-            color: #007BFF;
-            text-decoration: none;
-        }
-
-        .read-more:hover {
-            text-decoration: underline;
-        }
-
         /* Responsive Styles */
         @media (max-width: 768px) {
             .navbar {
@@ -243,7 +198,6 @@
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
         <a href="WhelmedBurrow.html">Appointment</a>
-        <a href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
     </div>
     
@@ -251,64 +205,39 @@
         <div class="outer-bubble">
             <div class="bubble bubble1" onclick="location.href='services.html';">Counseling</div>
             <div class="bubble bubble2" onclick="location.href='services.html';">Academic Support</div>
-            <div class="bubble bubble3" onclick="location.href='services.html';">Career Guidance</div>
-            <div class="bubble bubble4" onclick="location.href='services.html';">Mental Health</div>
-            <div class="bubble bubble5" onclick="location.href='services.html';">Tutoring</div>
+            <div class="bubble bubble3" onclick="location.href='services.html';">Tutoring</div>
+            <div class="bubble bubble4" onclick="location.href='services.html';">Workshops</div>
+            <div class="bubble bubble5" onclick="location.href='services.html';">Resources</div>
         </div>
         
-        <!-- Floating Bubbles -->
-        <div class="floating-bubble" onclick="popBubble(this)"></div>
-        <div class="floating-bubble" onclick="popBubble(this)"></div>
-        <div class="floating-bubble" onclick="popBubble(this)"></div>
-        <div class="floating-bubble" onclick="popBubble(this)"></div>
-        <div class="floating-bubble" onclick="popBubble(this)"></div>
-        <div class="floating-bubble" onclick="popBubble(this)"></div>
-        <div class="floating-bubble" onclick="popBubble(this)"></div>
-        <div class="floating-bubble" onclick="popBubble(this)"></div>
-    </div>
-
-    <div id="blog">
-        <h2>Latest Blog Posts</h2>
-        <div class="blog-container">
-            <div class="blog-post">
-                <h3>Understanding Mental Health</h3>
-                <div class="blog-date">October 1, 2024</div>
-                <div class="blog-content">
-                    Learn about the importance of mental health and how to take care of it...
-                </div>
-                <a class="read-more" href="#">Read more</a>
-            </div>
-            <div class="blog-post">
-                <h3>Effective Study Techniques</h3>
-                <div class="blog-date">October 5, 2024</div>
-                <div class="blog-content">
-                    Discover study techniques that can help you improve your learning process...
-                </div>
-                <a class="read-more" href="#">Read more</a>
-            </div>
-            <div class="blog-post">
-                <h3>Managing Stress During Exams</h3>
-                <div class="blog-date">October 10, 2024</div>
-                <div class="blog-content">
-                    Tips on how to manage stress effectively while preparing for exams...
-                </div>
-                <a class="read-more" href="#">Read more</a>
-            </div>
-        </div>
+        <!-- Floating background bubbles -->
+        <div class="floating-bubble"></div>
+        <div class="floating-bubble"></div>
+        <div class="floating-bubble"></div>
+        <div class="floating-bubble"></div>
+        <div class="floating-bubble"></div>
+        <div class="floating-bubble"></div>
+        <div class="floating-bubble"></div>
+        <div class="floating-bubble"></div>
     </div>
 
     <script>
-        // Loading animation
-        window.onload = function() {
-            document.querySelector('.loader').classList.remove('active');
-        };
+        // Loader script
+        window.addEventListener('load', function() {
+            document.querySelector('.loader').classList.remove('active'); // Hide loader when page loads
+        });
 
-        function popBubble(bubble) {
-            bubble.style.transform = 'scale(0)';
-            setTimeout(() => {
-                bubble.style.display = 'none'; // Hide bubble after popping
-            }, 300);
-        }
+        // Pop effect for bubbles
+        const bubbles = document.querySelectorAll('.bubble, .floating-bubble');
+        bubbles.forEach(bubble => {
+            bubble.addEventListener('click', () => {
+                bubble.style.transform = 'scale(0)';
+                setTimeout(() => {
+                    bubble.style.display = 'none'; // Hide bubble after pop effect
+                }, 300); // Match timeout with CSS transition duration
+            });
+        });
     </script>
 </body>
 </html>
+
