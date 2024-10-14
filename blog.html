@@ -132,12 +132,13 @@
         /* Responsive Styles */
         @media (max-width: 768px) {
             .navbar {
-                flex-direction: column; /* Stack items vertically on smaller screens */
+                flex-direction: row; /* Keep items in a row on mobile */
                 padding: 10px;
+                justify-content: space-between; /* Space items out */
             }
 
             .navbar a {
-                margin: 5px 0; /* Stack links with vertical spacing */
+                margin: 0 5px; /* Space between links */
             }
 
             #blog {
