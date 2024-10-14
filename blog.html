@@ -38,7 +38,7 @@
         .navbar a {
             text-decoration: none;
             color: #007BFF;
-            margin: 0 10px;
+            margin: 0 10px; /* Default margin for PC */
             font-weight: bold;
             transition: color 0.5s ease;
         }
@@ -139,7 +139,7 @@
             }
 
             .navbar a {
-                margin: 5px 0; /* Stack links on smaller screens */
+                margin: 2px 5px; /* Closer spacing on mobile */
                 flex: 1; /* Allow equal width for items */
                 text-align: center; /* Center text */
             }
@@ -150,6 +150,12 @@
 
             .blog-post {
                 padding: 15px; /* Less padding on mobile */
+            }
+        }
+
+        @media (min-width: 769px) {
+            .navbar a {
+                margin: 0 15px; /* More space between items on PC */
             }
         }
 
