@@ -92,13 +92,12 @@
         .container {
             position: relative;
             width: 100%;
-            height: auto; /* Allow height to adjust */
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 100px;
             flex-wrap: wrap; /* Allow wrapping for bubbles */
-            padding: 20px; /* Padding to ensure spacing */
         }
 
         .bubble {
@@ -111,9 +110,9 @@
             text-align: center;
             color: black;
             font-weight: bold;
+            position: absolute;
             transition: transform 0.5s ease, box-shadow 0.5s ease;
             cursor: pointer;
-            margin: 10px; /* Space between bubbles */
         }
 
         .bubble:hover {
@@ -122,6 +121,11 @@
         }
 
         .outer-bubble {
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background-image: url('pngwing.com.png');
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -129,11 +133,17 @@
         }
 
         /* Bubbles for Whelmed support services */
-        .bubble1 { width: 160px; height: 160px; }
-        .bubble2 { width: 140px; height: 140px; }
-        .bubble3 { width: 120px; height: 120px; }
-        .bubble4 { width: 180px; height: 180px; }
-        .bubble5 { width: 100px; height: 100px; }
+        .bubble1 { width: 160px; height: 160px; left: 50%; top: 40%; transform: translate(-50%, -50%); animation: hover 4s ease-in-out infinite; }
+        .bubble2 { width: 140px; height: 140px; left: 70%; top: 60%; transform: translate(-50%, -50%); animation: hover 5s ease-in-out infinite; }
+        .bubble3 { width: 120px; height: 120px; left: 55%; top: 80%; transform: translate(-50%, -50%); animation: hover 6s ease-in-out infinite; }
+        .bubble4 { width: 180px; height: 180px; left: 30%; top: 50%; transform: translate(-50%, -50%); animation: hover 7s ease-in-out infinite; }
+        .bubble5 { width: 100px; height: 100px; left: 20%; top: 35%; transform: translate(-50%, -50%); animation: hover 8s ease-in-out infinite; }
+
+        @keyframes hover {
+            0% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-10px); }
+            100% { transform: translate(-50%, -50%) translateY(0); }
+        }
 
         /* Floating background bubbles */
         .floating-bubble {
@@ -172,16 +182,23 @@
             }
             .outer-bubble {
                 width: 80vw; /* Use a percentage for responsive width */
-                height: auto; /* Allow height to adjust based on width */
+                height: 80vw; /* Use a percentage for responsive height */
                 max-width: 400px; /* Maximum size for larger screens */
+                max-height: 400px; /* Maximum size for larger screens */
                 position: relative; /* Position relative for nested bubbles */
             }
             .bubble {
                 width: 90px; /* Adjusted for mobile */
                 height: 90px; /* Adjusted for mobile */
                 font-size: 12px; /* Adjust text size for smaller screens */
+                position: relative; /* Make bubbles relative to allow wrapping */
+                transform: none; /* Reset transform to avoid positioning issues */
                 margin: 10px; /* Add margin to separate bubbles */
                 display: inline-block; /* Allow inline-block for bubbles */
+            }
+            .bubble1, .bubble2, .bubble3, .bubble4, .bubble5 {
+                position: relative; /* Make bubbles relative to the parent container */
+                animation: none; /* Disable animations for simplicity */
             }
         }
     </style>
