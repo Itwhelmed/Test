@@ -30,16 +30,15 @@
             padding: 10px 20px;
             z-index: 1000;
             display: flex;
-            flex-direction: row; /* Arrange items in a row */
-            flex-wrap: wrap; /* Allow items to wrap */
-            overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
-            justify-content: space-between; /* Distribute space between items */
+            align-items: center;
+            justify-content: flex-start; /* Align items to the start */
+            flex-wrap: wrap; /* Allow wrapping */
         }
 
         .navbar a {
             text-decoration: none;
             color: #007BFF;
-            margin: 5px; /* Adjust margin for better spacing */
+            margin: 0 10px; /* Space between links */
             font-weight: bold;
             transition: color 0.5s ease;
         }
@@ -135,12 +134,10 @@
             .navbar {
                 flex-direction: column; /* Stack items vertically on smaller screens */
                 padding: 10px;
-                align-items: flex-start; /* Align items to the start */
-                overflow-x: auto; /* Allow horizontal scroll on small screens */
             }
 
             .navbar a {
-                margin: 5px 0; /* Stack links on smaller screens */
+                margin: 5px 0; /* Stack links with vertical spacing */
             }
 
             #blog {
