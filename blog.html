@@ -30,8 +30,9 @@
             padding: 10px 20px;
             z-index: 1000;
             display: flex;
-            justify-content: space-between; /* Space between items */
             align-items: center;
+            flex-wrap: wrap;
+            overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
         }
 
         .navbar a {
@@ -62,6 +63,10 @@
             border-radius: 5px;
         }
 
+        .navbar .nav-space {
+            margin-right: auto;
+        }
+
         /* Blog Section Styles */
         #blog {
             width: 90%; /* Adjusted for better mobile view */
@@ -72,9 +77,9 @@
         }
 
         .blog-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Create a responsive grid */
-            gap: 20px; /* Space between grid items */
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .blog-post {
@@ -127,14 +132,16 @@
         /* Responsive Styles */
         @media (max-width: 768px) {
             .navbar {
-                flex-wrap: wrap; /* Allow wrapping of navbar items */
-                justify-content: space-between; /* Space between items */
+                flex-direction: row; /* Horizontal layout for mobile */
+                flex-wrap: wrap; /* Allow wrapping */
+                padding: 10px;
+                align-items: flex-start; /* Align items to the start */
             }
 
             .navbar a {
-                flex: 1 1 30%; /* Each link takes 30% of the row, allowing for 3 per row */
-                text-align: center; /* Center align text */
-                margin: 5px 0; /* Space between links vertically */
+                margin: 5px 0; /* Stack links on smaller screens */
+                flex: 1; /* Allow equal width for items */
+                text-align: center; /* Center text */
             }
 
             #blog {
@@ -166,8 +173,9 @@
         <span class="nav-space"></span>
         <a href="Whelmed.html">Home</a>
         <a href="about.html">About</a>
-        <a href="appointment.html">Appointment</a> <!-- Moved Appointment under About -->
         <a href="services.html">Services</a>
+        <a href="appointment.html">Appointment</a>
+        <a href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
     </div>
 
@@ -202,7 +210,7 @@
 
             // Animate bubble upward
             const distance = Math.random() * 300 + 200; // Move up between 200px and 500px
-            bubble.animate([
+            bubble.animate([ 
                 { transform: 'translateY(0)' },
                 { transform: `translateY(-${distance}px)` } // Move up
             ], {
