@@ -132,13 +132,13 @@
         /* Responsive Styles */
         @media (max-width: 768px) {
             .navbar {
-                flex-direction: row; /* Keep items in a row on mobile */
+                flex-direction: column; /* Stack items vertically on mobile */
                 padding: 10px;
-                justify-content: space-between; /* Space items out */
+                align-items: flex-start; /* Align items to the start */
             }
 
             .navbar a {
-                margin: 0 5px; /* Space between links */
+                margin: 5px 0; /* Stack links on smaller screens */
             }
 
             #blog {
@@ -170,8 +170,8 @@
         <span class="nav-space"></span>
         <a href="Whelmed.html">Home</a>
         <a href="about.html">About</a>
+        <a href="appointment.html">Appointment</a> <!-- Moved Appointment under About -->
         <a href="services.html">Services</a>
-        <a href="appointment.html">Appointment</a>
         <a href="contact.html">Contact</a>
     </div>
 
