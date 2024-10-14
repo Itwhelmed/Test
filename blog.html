@@ -30,15 +30,16 @@
             padding: 10px 20px;
             z-index: 1000;
             display: flex;
-            align-items: center;
-            flex-wrap: wrap;
+            flex-direction: row; /* Arrange items in a row */
+            flex-wrap: wrap; /* Allow items to wrap */
             overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
+            justify-content: space-between; /* Distribute space between items */
         }
 
         .navbar a {
             text-decoration: none;
             color: #007BFF;
-            margin: 0 10px;
+            margin: 5px; /* Adjust margin for better spacing */
             font-weight: bold;
             transition: color 0.5s ease;
         }
@@ -132,7 +133,7 @@
         /* Responsive Styles */
         @media (max-width: 768px) {
             .navbar {
-                flex-direction: column;
+                flex-direction: column; /* Stack items vertically on smaller screens */
                 padding: 10px;
                 align-items: flex-start; /* Align items to the start */
                 overflow-x: auto; /* Allow horizontal scroll on small screens */
