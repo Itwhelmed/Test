@@ -68,7 +68,7 @@
 
         /* Blog Section Styles */
         #blog {
-            width: 80%;
+            width: 90%; /* Adjusted for better mobile view */
             margin: 120px auto;
             text-align: left;
             position: relative; /* To position bubbles properly */
@@ -132,6 +132,15 @@
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
+                padding: 15px;
+            }
+
+            #blog {
+                width: 95%; /* Wider on mobile */
+            }
+
+            .blog-post {
+                padding: 15px; /* Less padding on mobile */
             }
         }
     </style>
@@ -227,7 +236,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             fetchLatestPosts();
-            setInterval(fetchLatestPosts, 60000);
+            setInterval(fetchLatestPosts, 60000); // Refresh posts every 60 seconds
         });
     </script>
 </body>
