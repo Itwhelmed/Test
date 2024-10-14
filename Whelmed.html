@@ -48,7 +48,6 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             padding: 10px 20px; /* Reduced padding */
             z-index: 1000;
-            transition: all 0.5s ease;
             display: flex;
             align-items: center; /* Align items vertically centered */
             justify-content: space-between; /* Space out logo and links */
@@ -176,33 +175,41 @@
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
+                align-items: center; /* Center items in mobile view */
+            }
+            .navbar a {
+                margin: 5px 0; /* Stack links vertically with margin */
             }
             .outer-bubble {
-                width: 90vw;
-                height: 90vw;
+                width: 80vw; /* Use a percentage for responsive width */
+                height: 80vw; /* Use a percentage for responsive height */
+                max-width: 400px; /* Maximum size for larger screens */
+                max-height: 400px; /* Maximum size for larger screens */
+                position: relative; /* Position relative for nested bubbles */
             }
             .bubble {
+                width: 90px; /* Adjusted for mobile */
+                height: 90px; /* Adjusted for mobile */
                 font-size: 12px; /* Adjust text size for smaller screens */
-                position: relative; /* Change to relative to prevent overlap */
-                margin: 10px; /* Add margin to separate bubbles */
-            }
-            .bubble1, .bubble2, .bubble3, .bubble4, .bubble5 {
                 position: relative; /* Make bubbles relative to allow wrapping */
                 transform: none; /* Reset transform to avoid positioning issues */
-                animation: none; /* Disable animations on mobile for clarity */
+                margin: 10px; /* Add margin to separate bubbles */
+                display: inline-block; /* Allow inline-block for bubbles */
+            }
+            .bubble1, .bubble2, .bubble3, .bubble4, .bubble5 {
+                position: relative; /* Make bubbles relative to the parent container */
+                animation: none; /* Disable animations for simplicity */
             }
         }
     </style>
 </head>
 <body>
-    <div class="loader active">
-        <img src="loader.gif" alt="Loading..."> <!-- Loading GIF -->
-    </div>
-
-    <div class="navbar" id="navbar">
-        <a href="index.html"><img src="logo.jpeg" alt="Whelmed Logo"></a>
-        <span class="whelmed">Whelmed</span>
-        <span class="nav-space"></span> <!-- Space between logo and links -->
+    <div class="loader active"><img src="loader.gif" alt="Loading..."></div> <!-- Loader -->
+    
+    <div class="navbar">
+        <a href="index.html"><img src="logo.jpeg" alt="Whelmed Logo"> </a>
+        <div class="whelmed">Whelmed</div>
+        <div class="nav-space"></div> <!-- Spacer for equal spacing -->
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
         <a href="WhelmedBurrow.html">Appointment</a>
