@@ -25,13 +25,14 @@
             top: 0;
             left: 0;
             right: 0;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             padding: 10px 20px;
             z-index: 1000;
             display: flex;
             align-items: center;
             flex-wrap: wrap;
+            overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
         }
 
         .navbar a {
@@ -132,7 +133,13 @@
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
-                padding: 15px;
+                padding: 10px;
+                align-items: flex-start; /* Align items to the start */
+                overflow-x: auto; /* Allow horizontal scroll on small screens */
+            }
+
+            .navbar a {
+                margin: 5px 0; /* Stack links on smaller screens */
             }
 
             #blog {
@@ -141,6 +148,16 @@
 
             .blog-post {
                 padding: 15px; /* Less padding on mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar img {
+                height: 30px; /* Smaller logo on extra small screens */
+            }
+
+            .navbar .whelmed {
+                font-size: 18px; /* Smaller font for brand name */
             }
         }
     </style>
