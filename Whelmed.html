@@ -1,257 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whelmed - Supporting Students for Free</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-image: url('background.jpg'); /* Use your background image */
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: background-color 0.5s ease;
-            overflow-x: hidden;
-            position: relative; /* For absolutely positioned elements */
-        }
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center; /* Center items in mobile view */
+    }
+    .navbar a {
+        margin: 5px 0; /* Stack links vertically with margin */
+        font-size: 16px; /* Slightly larger for better readability */
+    }
+    .outer-bubble {
+        width: 80vw; /* Use a percentage for responsive width */
+        height: 80vw; /* Use a percentage for responsive height */
+        max-width: 400px; /* Maximum size for larger screens */
+        max-height: 400px; /* Maximum size for larger screens */
+        position: relative; /* Position relative for nested bubbles */
+    }
+    .bubble {
+        width: 100px; /* Adjusted for mobile */
+        height: 100px; /* Adjusted for mobile */
+        font-size: 12px; /* Adjust text size for smaller screens */
+        position: relative; /* Make bubbles relative to allow wrapping */
+        margin: 10px; /* Add margin to separate bubbles */
+        display: inline-block; /* Allow inline-block for bubbles */
+        transition: transform 0.2s ease; /* Smooth popping effect */
+    }
+    .bubble1, .bubble2, .bubble3, .bubble4, .bubble5 {
+        animation: none; /* Disable animations for simplicity */
+    }
 
-        /* Loading Animation */
-        .loader {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2000; /* On top of everything */
-            display: none; /* Hidden initially */
-        }
-
-        .loader.active {
-            display: block; /* Show when active */
-        }
-
-        .loader img {
-            width: 100px; /* Adjust as needed */
-            height: auto;
-        }
-
-        /* Navbar styles */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            padding: 10px 20px; /* Reduced padding */
-            z-index: 1000;
-            display: flex;
-            align-items: center; /* Align items vertically centered */
-            justify-content: space-between; /* Space out logo and links */
-            flex-wrap: wrap;
-        }
-
-        .navbar a {
-            text-decoration: none;
-            color: #007BFF;
-            margin: 0 10px;
-            font-weight: bold;
-            transition: color 0.5s ease;
-        }
-
-        .navbar a:hover {
-            color: #0056b3;
-        }
-
-        .navbar img {
-            height: 40px;
-            vertical-align: middle;
-            margin-right: 5px; /* Reduced margin */
-        }
-
-        /* Whelmed text style */
-        .navbar .whelmed {
-            font-size: 24px;
-            font-weight: bold;
-            color: #FF4500; /* Bright color to stand out */
-            margin-left: 5px;
-            padding: 5px 10px;
-            background-color: rgba(255, 69, 0, 0.1); /* Light background to make it pop */
-            border-radius: 5px; /* Rounded corners */
-        }
-
-        /* Space between Whelmed and other links */
-        .navbar .nav-space {
-            margin-right: auto;
-        }
-
-        /* Main bubbles */
-        .container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 100px;
-            flex-wrap: wrap; /* Allow wrapping for bubbles */
-        }
-
-        .bubble {
-            background-image: url('pngwing.com.png'); /* Main bubble background */
-            background-size: cover;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: black;
-            font-weight: bold;
-            position: absolute;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-            cursor: pointer;
-        }
-
-        .bubble:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .outer-bubble {
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background-image: url('pngwing.com.png');
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        /* Bubbles for Whelmed support services */
-        .bubble1 { width: 160px; height: 160px; left: 50%; top: 40%; transform: translate(-50%, -50%); animation: hover 4s ease-in-out infinite; }
-        .bubble2 { width: 140px; height: 140px; left: 70%; top: 60%; transform: translate(-50%, -50%); animation: hover 5s ease-in-out infinite; }
-        .bubble3 { width: 120px; height: 120px; left: 55%; top: 80%; transform: translate(-50%, -50%); animation: hover 6s ease-in-out infinite; }
-        .bubble4 { width: 180px; height: 180px; left: 30%; top: 50%; transform: translate(-50%, -50%); animation: hover 7s ease-in-out infinite; }
-        .bubble5 { width: 100px; height: 100px; left: 20%; top: 35%; transform: translate(-50%, -50%); animation: hover 8s ease-in-out infinite; }
-
-        @keyframes hover {
-            0% { transform: translate(-50%, -50%) translateY(0); }
-            50% { transform: translate(-50%, -50%) translateY(-10px); }
-            100% { transform: translate(-50%, -50%) translateY(0); }
-        }
-
-        /* Floating background bubbles */
-        .floating-bubble {
-            position: absolute;
-            border-radius: 50%;
-            background-image: url('pngwing.com.png'); /* Match main bubble style */
-            background-size: cover;
-            transition: transform 0.2s ease; /* Smooth popping effect */
-            cursor: pointer; /* Makes it clickable */
-            pointer-events: auto;
-        }
-
-        .floating-bubble:nth-child(1) { width: 50px; height: 50px; top: 10%; left: 15%; animation: float 12s infinite ease-in-out; }
-        .floating-bubble:nth-child(2) { width: 30px; height: 30px; top: 20%; left: 70%; animation: float 14s infinite ease-in-out; }
-        .floating-bubble:nth-child(3) { width: 80px; height: 80px; top: 60%; left: 30%; animation: float 16s infinite ease-in-out; }
-        .floating-bubble:nth-child(4) { width: 100px; height: 100px; top: 50%; left: 80%; animation: float 18s infinite ease-in-out; }
-        .floating-bubble:nth-child(5) { width: 60px; height: 60px; top: 30%; left: 40%; animation: float 10s infinite ease-in-out; }
-        .floating-bubble:nth-child(6) { width: 40px; height: 40px; top: 70%; left: 20%; animation: float 15s infinite ease-in-out; }
-        .floating-bubble:nth-child(7) { width: 70px; height: 70px; top: 80%; left: 60%; animation: float 12s infinite ease-in-out; }
-        .floating-bubble:nth-child(8) { width: 90px; height: 90px; top: 40%; left: 10%; animation: float 14s infinite ease-in-out; }
-
-        @keyframes float {
-            0% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-50px) translateX(30px); }
-            100% { transform: translateY(0) translateX(0); }
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: center; /* Center items in mobile view */
-            }
-            .navbar a {
-                margin: 5px 0; /* Stack links vertically with margin */
-            }
-            .outer-bubble {
-                width: 80vw; /* Use a percentage for responsive width */
-                height: 80vw; /* Use a percentage for responsive height */
-                max-width: 400px; /* Maximum size for larger screens */
-                max-height: 400px; /* Maximum size for larger screens */
-                position: relative; /* Position relative for nested bubbles */
-            }
-            .bubble {
-                width: 90px; /* Adjusted for mobile */
-                height: 90px; /* Adjusted for mobile */
-                font-size: 12px; /* Adjust text size for smaller screens */
-                position: relative; /* Make bubbles relative to allow wrapping */
-                transform: none; /* Reset transform to avoid positioning issues */
-                margin: 10px; /* Add margin to separate bubbles */
-                display: inline-block; /* Allow inline-block for bubbles */
-            }
-            .bubble1, .bubble2, .bubble3, .bubble4, .bubble5 {
-                position: relative; /* Make bubbles relative to the parent container */
-                animation: none; /* Disable animations for simplicity */
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="loader active"><img src="loader.gif" alt="Loading..."></div> <!-- Loader -->
-    
-    <div class="navbar">
-        <a href="index.html"><img src="logo.jpeg" alt="Whelmed Logo"> </a>
-        <div class="whelmed">Whelmed</div>
-        <div class="nav-space"></div> <!-- Spacer for equal spacing -->
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="WhelmedBurrow.html">Appointment</a>
-        <a href="contact.html">Contact</a>
-    </div>
-    
-    <div class="container">
-        <div class="outer-bubble">
-            <div class="bubble bubble1" onclick="location.href='services.html';">Counseling</div>
-            <div class="bubble bubble2" onclick="location.href='services.html';">Academic Support</div>
-            <div class="bubble bubble3" onclick="location.href='services.html';">Tutoring</div>
-            <div class="bubble bubble4" onclick="location.href='services.html';">Workshops</div>
-            <div class="bubble bubble5" onclick="location.href='services.html';">Resources</div>
-        </div>
-        
-        <!-- Floating background bubbles -->
-        <div class="floating-bubble"></div>
-        <div class="floating-bubble"></div>
-        <div class="floating-bubble"></div>
-        <div class="floating-bubble"></div>
-        <div class="floating-bubble"></div>
-        <div class="floating-bubble"></div>
-        <div class="floating-bubble"></div>
-        <div class="floating-bubble"></div>
-    </div>
-
-    <script>
-        // Loader script
-        window.addEventListener('load', function() {
-            document.querySelector('.loader').classList.remove('active'); // Hide loader when page loads
-        });
-
-        // Pop effect for bubbles
-        const bubbles = document.querySelectorAll('.bubble, .floating-bubble');
-        bubbles.forEach(bubble => {
-            bubble.addEventListener('click', () => {
-                bubble.style.transform = 'scale(0)';
-                setTimeout(() => {
-                    bubble.style.display = 'none'; // Hide bubble after pop effect
-                }, 300); // Match timeout with CSS transition duration
-            });
-        });
-    </script>
-</body>
-</html>
+    /* Adjust floating bubbles to fit better */
+    .floating-bubble {
+        width: 40px; /* Smaller size for mobile */
+        height: 40px; /* Smaller size for mobile */
+    }
+}
