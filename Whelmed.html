@@ -98,6 +98,7 @@
             justify-content: center;
             align-items: center;
             margin-top: 100px;
+            flex-wrap: wrap; /* Allow wrapping for bubbles */
         }
 
         .bubble {
@@ -182,6 +183,13 @@
             }
             .bubble {
                 font-size: 12px; /* Adjust text size for smaller screens */
+                position: relative; /* Change to relative to prevent overlap */
+                margin: 10px; /* Add margin to separate bubbles */
+            }
+            .bubble1, .bubble2, .bubble3, .bubble4, .bubble5 {
+                position: relative; /* Make bubbles relative to allow wrapping */
+                transform: none; /* Reset transform to avoid positioning issues */
+                animation: none; /* Disable animations on mobile for clarity */
             }
         }
     </style>
@@ -240,4 +248,3 @@
     </script>
 </body>
 </html>
-
