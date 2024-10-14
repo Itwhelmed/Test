@@ -15,8 +15,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow: hidden; /* Prevents scrolling */
             position: relative;
+            overflow-x: hidden; /* Prevents horizontal scrolling */
         }
 
         /* Navbar styles */
@@ -69,7 +69,7 @@
         /* Blog Section Styles */
         #blog {
             width: 90%; /* Adjusted for better mobile view */
-            margin: 120px auto;
+            margin: 120px auto; /* Ensure there is space below the fixed navbar */
             text-align: left;
             position: relative; /* To position bubbles properly */
             z-index: 1; /* Ensure blog posts are above bubbles */
@@ -156,6 +156,7 @@
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
         <a href="appointment.html">Appointment</a>
+        <a href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
     </div>
 
