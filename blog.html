@@ -77,9 +77,9 @@
         }
 
         .blog-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Create a responsive grid */
+            gap: 20px; /* Space between grid items */
         }
 
         .blog-post {
