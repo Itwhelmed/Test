@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1024"> <!-- Set fixed width for desktop view -->
     <title>Whelmed - Supporting Students for Free</title>
     <style>
         body {
@@ -51,7 +51,6 @@
             display: flex;
             align-items: center; /* Align items vertically centered */
             justify-content: space-between; /* Space out logo and links */
-            flex-wrap: wrap;
         }
 
         .navbar a {
@@ -91,7 +90,7 @@
         /* Main bubbles */
         .container {
             position: relative;
-            width: 100%;
+            width: 1024px; /* Fixed width for desktop */
             height: 100%;
             display: flex;
             justify-content: center;
@@ -171,61 +170,38 @@
             100% { transform: translateY(0) translateX(0); }
         }
 
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: center; /* Center items in mobile view */
-            }
-            .navbar a {
-                margin: 5px 0; /* Stack links vertically with margin */
-            }
-            .outer-bubble {
-                width: 80vw; /* Use a percentage for responsive width */
-                height: 80vw; /* Use a percentage for responsive height */
-                max-width: 400px; /* Maximum size for larger screens */
-                max-height: 400px; /* Maximum size for larger screens */
-                position: relative; /* Position relative for nested bubbles */
-            }
-            .bubble {
-                width: 90px; /* Adjusted for mobile */
-                height: 90px; /* Adjusted for mobile */
-                font-size: 12px; /* Adjust text size for smaller screens */
-                position: relative; /* Make bubbles relative to allow wrapping */
-                transform: none; /* Reset transform to avoid positioning issues */
-                margin: 10px; /* Add margin to separate bubbles */
-                display: inline-block; /* Allow inline-block for bubbles */
-            }
-            .bubble1, .bubble2, .bubble3, .bubble4, .bubble5 {
-                position: relative; /* Make bubbles relative to the parent container */
-                animation: none; /* Disable animations for simplicity */
-            }
-        }
+        /* Disable Responsive Styles */
+        /* Remove media queries for mobile responsiveness to keep the desktop layout */
     </style>
 </head>
 <body>
-    <div class="loader active"><img src="loader.gif" alt="Loading..."></div> <!-- Loader -->
-    
-    <div class="navbar">
-        <a href="index.html"><img src="logo.jpeg" alt="Whelmed Logo"> </a>
-        <div class="whelmed">Whelmed</div>
-        <div class="nav-space"></div> <!-- Spacer for equal spacing -->
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="WhelmedBurrow.html">Appointment</a>
-        <a href="contact.html">Contact</a>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <img src="loader.gif" alt="Loading..."> <!-- Your loader image -->
     </div>
-    
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="index.html"><img src="logo.png" alt="Whelmed Logo"></a> <!-- Your logo image -->
+        <div class="nav-space"></div>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <span class="whelmed">Whelmed</span>
+    </div>
+
+    <!-- Main Bubbles -->
     <div class="container">
         <div class="outer-bubble">
-            <div class="bubble bubble1" onclick="location.href='services.html';">Counseling</div>
-            <div class="bubble bubble2" onclick="location.href='services.html';">Academic Support</div>
-            <div class="bubble bubble3" onclick="location.href='services.html';">Tutoring</div>
-            <div class="bubble bubble4" onclick="location.href='services.html';">Workshops</div>
-            <div class="bubble bubble5" onclick="location.href='services.html';">Resources</div>
+            <div class="bubble bubble1" onclick="alert('Bubble 1 Clicked!')">Bubble 1</div>
+            <div class="bubble bubble2" onclick="alert('Bubble 2 Clicked!')">Bubble 2</div>
+            <div class="bubble bubble3" onclick="alert('Bubble 3 Clicked!')">Bubble 3</div>
+            <div class="bubble bubble4" onclick="alert('Bubble 4 Clicked!')">Bubble 4</div>
+            <div class="bubble bubble5" onclick="alert('Bubble 5 Clicked!')">Bubble 5</div>
         </div>
-        
-        <!-- Floating background bubbles -->
+
+        <!-- Floating Background Bubbles -->
         <div class="floating-bubble"></div>
         <div class="floating-bubble"></div>
         <div class="floating-bubble"></div>
@@ -239,18 +215,8 @@
     <script>
         // Loader script
         window.addEventListener('load', function() {
-            document.querySelector('.loader').classList.remove('active'); // Hide loader when page loads
-        });
-
-        // Pop effect for bubbles
-        const bubbles = document.querySelectorAll('.bubble, .floating-bubble');
-        bubbles.forEach(bubble => {
-            bubble.addEventListener('click', () => {
-                bubble.style.transform = 'scale(0)';
-                setTimeout(() => {
-                    bubble.style.display = 'none'; // Hide bubble after pop effect
-                }, 300); // Match timeout with CSS transition duration
-            });
+            const loader = document.getElementById('loader');
+            loader.classList.remove('active'); // Hide loader when page is fully loaded
         });
     </script>
 </body>
