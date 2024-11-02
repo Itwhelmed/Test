@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Whelmed</title>
+    <link rel="icon" href="logo.jpeg" type="image/jpeg"> <!-- Favicon -->
     <style>
         body {
             margin: 0;
@@ -16,9 +17,79 @@
             position: relative;
         }
 
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2000; /* On top of everything */
+            display: none; /* Hidden initially */
+        }
+
+        .loader.active {
+            display: block; /* Show when active */
+        }
+
+        .loader img {
+            width: 100px; /* Adjust as needed */
+            height: auto;
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px 20px; /* Reduced padding */
+            z-index: 1000;
+            transition: all 0.5s ease;
+            display: flex;
+            align-items: center; /* Align items vertically centered */
+            flex-wrap: wrap;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #007BFF;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.5s ease;
+        }
+
+        .navbar a:hover {
+            color: #0056b3;
+        }
+
+        .navbar img {
+            height: 40px;
+            vertical-align: middle;
+            margin-right: 5px; /* Reduced margin */
+        }
+
+        /* Whelmed text style */
+        .navbar .whelmed {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF4500; /* Bright color to stand out */
+            margin-left: 5px;
+            padding: 5px 10px;
+            background-color: rgba(255, 69, 0, 0.1); /* Light background to make it pop */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        /* Space between Whelmed and other links */
+        .navbar .nav-space {
+            margin-right: auto;
+        }
+
+        /* About Container */
         .about-container {
             max-width: 900px;
-            margin: 50px auto;
+            margin: 100px auto 50px; /* Space below the fixed navbar */
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
@@ -124,18 +195,19 @@
             margin-bottom: 20px;
         }
 
+        /* Floating Bubbles */
         .floating-bubble {
             position: absolute;
             border-radius: 50%;
             background-image: url('pngwing.com.png'); /* Replace with your bubble image */
             background-size: cover;
             pointer-events: none;
-            animation: float 10s infinite ease-in-out;
+            animation: float 6s infinite ease-in-out; /* Duration of bubble floating */
         }
 
         @keyframes float {
             0% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-30px) translateX(20px); }
+            50% { transform: translateY(-20px) translateX(15px); } /* Adjust for different bubble floating effects */
             100% { transform: translateY(0) translateX(0); }
         }
 
@@ -144,10 +216,37 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .about-container {
+                margin: 100px 20px; /* Adjust margins for smaller screens */
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <img src="loading.gif" alt="Loading...">
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="index.html"><img src="logo.jpeg" alt="Whelmed Logo"></a>
+        <span class="whelmed">Whelmed</span>
+        <span class="nav-space"></span>
+        <a href="Whelmed.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="WhelmedBurrow.html">Appointment</a>
+        <a href="blog.html">Blog</a>
+        <a href="donate.html">Donate</a>
+        <a href="contact.html">Contact</a>
+    </div>
 
     <div class="about-container">
         <h1>About Us</h1>
@@ -187,12 +286,12 @@
                 <div class="member">
                     <img src="team-member2.jpeg" alt="Susan Lee">
                     <h3>Susan Lee</h3>
-                    <p>Science Tutor</p>
+                    <p>Science Specialist</p>
                 </div>
                 <div class="member">
-                    <img src="team-member3.jpeg" alt="Michael Johnson">
-                    <h3>Michael Johnson</h3>
-                    <p>Math Tutor</p>
+                    <img src="team-member3.jpeg" alt="James Smith">
+                    <h3>James Smith</h3>
+                    <p>Math Expert</p>
                 </div>
             </div>
         </div>
@@ -200,43 +299,43 @@
         <div class="testimonials">
             <h2>What Our Students Say</h2>
             <div class="testimonial">
-                <p>"Whelmed helped me turn my grades around! The personalized tutoring made all the difference."</p>
-                <h3>- Emily R.</h3>
+                <p>"Whelmed has transformed my learning experience. The tutors are amazing!"</p>
+                <h3>- Alex T.</h3>
             </div>
             <div class="testimonial">
-                <p>"The tutors at Whelmed are fantastic! They really care about their students' success."</p>
-                <h3>- Jacob T.</h3>
-            </div>
-            <div class="testimonial">
-                <p>"I couldn't have done it without Whelmed. Their support was invaluable during exam season."</p>
-                <h3>- Sarah L.</h3>
+                <p>"I never thought I'd enjoy studying until I started working with Whelmed."</p>
+                <h3>- Jamie P.</h3>
             </div>
         </div>
 
         <div class="contact">
-            <h2>Get In Touch</h2>
-            <p>If you have any questions or want to learn more about our services, feel free to contact us!</p>
-            <p>Email: info@whelmed.com</p>
-            <p>Phone: (123) 456-7890</p>
+            <h2>Get in Touch</h2>
+            <p>If you have any questions or would like to learn more about our services, please contact us!</p>
         </div>
     </div>
 
-    <!-- Background Bubbles -->
+    <!-- Floating Bubbles -->
     <script>
-        const bubbleCount = 50; // Number of bubbles
-        const container = document.body;
+        const bubbleCount = 50; // Total number of bubbles to create
+        const bubbleContainer = document.body; // Container for bubbles
 
         for (let i = 0; i < bubbleCount; i++) {
             const bubble = document.createElement('div');
-            bubble.className = 'floating-bubble';
-            const size = Math.random() * 60 + 30; // Bubble size between 30px and 90px
+            bubble.classList.add('floating-bubble');
+            const size = Math.random() * 100 + 30; // Random width/height between 30px and 130px
             bubble.style.width = `${size}px`;
             bubble.style.height = `${size}px`;
-            bubble.style.top = `${Math.random() * 100}vh`;
-            bubble.style.left = `${Math.random() * 100}vw`;
-            bubble.style.animationDuration = `${Math.random() * 10 + 10}s`; // Random animation duration between 10s and 20s
-            container.appendChild(bubble);
+            bubble.style.top = `${Math.random() * 100}vh`; // Random vertical position within viewport
+            bubble.style.left = `${Math.random() * 100}vw`; // Random horizontal position within viewport
+            bubble.style.animationDuration = `${Math.random() * 5 + 5}s`; // Random duration between 5s and 10s
+            bubble.style.opacity = Math.random(); // Random opacity for variation
+            bubbleContainer.appendChild(bubble);
         }
+
+        window.onload = function() {
+            document.getElementById('loader').classList.remove('active'); // Hide loader when page is fully loaded
+        };
+        document.getElementById('loader').classList.add('active'); // Show loader on page load
     </script>
 </body>
 </html>

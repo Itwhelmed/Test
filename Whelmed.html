@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024"> <!-- Set fixed width for desktop view -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Whelmed - Supporting Students for Free</title>
+    <link rel="icon" href="logo.jpeg" type="image/jpeg"> <!-- Favicon -->
     <style>
         body {
             margin: 0;
@@ -44,13 +45,14 @@
             top: 0;
             left: 0;
             right: 0;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.8);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             padding: 10px 20px; /* Reduced padding */
             z-index: 1000;
+            transition: all 0.5s ease;
             display: flex;
             align-items: center; /* Align items vertically centered */
-            justify-content: space-between; /* Space out logo and links */
+            flex-wrap: wrap;
         }
 
         .navbar a {
@@ -90,13 +92,12 @@
         /* Main bubbles */
         .container {
             position: relative;
-            width: 1024px; /* Fixed width for desktop */
+            width: 100%;
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 100px;
-            flex-wrap: wrap; /* Allow wrapping for bubbles */
         }
 
         .bubble {
@@ -170,54 +171,81 @@
             100% { transform: translateY(0) translateX(0); }
         }
 
-        /* Disable Responsive Styles */
-        /* Remove media queries for mobile responsiveness to keep the desktop layout */
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            .outer-bubble {
+                width: 90vw;
+                height: 90vw;
+            }
+            .bubble {
+                font-size: 12px;
+            }
+            .bubble1 { width: 100px; height: 100px; }
+            .bubble2 { width: 80px; height: 80px; }
+            .bubble3 { width: 60px; height: 60px; }
+            .bubble4 { width: 120px; height: 120px; }
+            .bubble5 { width: 50px; height: 50px; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Loader -->
+    <!-- Loading Animation -->
     <div class="loader" id="loader">
-        <img src="loader.gif" alt="Loading..."> <!-- Your loader image -->
+        <img src="loading.gif" alt="Loading...">
     </div>
 
     <!-- Navbar -->
-    <div class="navbar">
-        <a href="index.html"><img src="logo.png" alt="Whelmed Logo"></a> <!-- Your logo image -->
-        <div class="nav-space"></div>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
+    <div class="navbar" id="navbar">
+        <a href="index.html"><img src="logo.jpeg" alt="Whelmed Logo"></a>
         <span class="whelmed">Whelmed</span>
+        <span class="nav-space"></span> <!-- Space between logo and links -->
+        <a href="About.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="WhelmedBurrow.html">Appointment</a>
+        <a href="blog.html">Blog</a>
+        <a href="donate.html">Donate</a> <!-- Added here -->
+        <a href="contact.html">Contact</a>
     </div>
 
-    <!-- Main Bubbles -->
+    <!-- Bubble Container -->
     <div class="container">
         <div class="outer-bubble">
-            <div class="bubble bubble1" onclick="alert('Bubble 1 Clicked!')">Bubble 1</div>
-            <div class="bubble bubble2" onclick="alert('Bubble 2 Clicked!')">Bubble 2</div>
-            <div class="bubble bubble3" onclick="alert('Bubble 3 Clicked!')">Bubble 3</div>
-            <div class="bubble bubble4" onclick="alert('Bubble 4 Clicked!')">Bubble 4</div>
-            <div class="bubble bubble5" onclick="alert('Bubble 5 Clicked!')">Bubble 5</div>
+            <div class="bubble bubble1" onclick="location.href='services.html';">Counseling</div>
+            <div class="bubble bubble2" onclick="location.href='services.html';">Academic Support</div>
+            <div class="bubble bubble3" onclick="location.href='services.html';">Career Guidance</div>
+            <div class="bubble bubble4" onclick="location.href='services.html';">Mental Health</div>
+            <div class="bubble bubble5" onclick="location.href='services.html';">Tutoring</div>
         </div>
 
         <!-- Floating Background Bubbles -->
-        <div class="floating-bubble"></div>
-        <div class="floating-bubble"></div>
-        <div class="floating-bubble"></div>
-        <div class="floating-bubble"></div>
-        <div class="floating-bubble"></div>
-        <div class="floating-bubble"></div>
-        <div class="floating-bubble"></div>
-        <div class="floating-bubble"></div>
+        <div class="floating-bubble" onclick="popBubble(this);"></div>
+        <div class="floating-bubble" onclick="popBubble(this);"></div>
+        <div class="floating-bubble" onclick="popBubble(this);"></div>
+        <div class="floating-bubble" onclick="popBubble(this);"></div>
+        <div class="floating-bubble" onclick="popBubble(this);"></div>
+        <div class="floating-bubble" onclick="popBubble(this);"></div>
+        <div class="floating-bubble" onclick="popBubble(this);"></div>
+        <div class="floating-bubble" onclick="popBubble(this);"></div>
     </div>
 
     <script>
+        function popBubble(element) {
+            element.style.transform = "scale(0)";
+            setTimeout(() => element.style.display = "none", 200);  // Smooth pop effect
+        }
+
         // Loader script
-        window.addEventListener('load', function() {
-            const loader = document.getElementById('loader');
-            loader.classList.remove('active'); // Hide loader when page is fully loaded
-        });
+        document.onreadystatechange = function () {
+            if (document.readyState !== "complete") {
+                document.getElementById('loader').classList.add('active');
+            } else {
+                document.getElementById('loader').classList.remove('active');
+            }
+        };
     </script>
 </body>
 </html>

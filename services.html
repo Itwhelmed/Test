@@ -4,21 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services - Whelmed</title>
+    <link rel="icon" href="logo.jpeg" type="image/jpeg"> <!-- Favicon -->
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-image: url('background.jpeg');
+            background-image: url('background.jpg');
             background-size: cover;
             background-position: center;
-            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             overflow-x: hidden;
             position: relative;
         }
 
+        /* Navbar styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #007BFF;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.5s ease;
+        }
+
+        .navbar a:hover {
+            color: #0056b3;
+        }
+
+        .navbar img {
+            height: 40px;
+            margin-right: 5px;
+        }
+
+        .navbar .whelmed {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF4500;
+            margin-left: 5px;
+            padding: 5px 10px;
+            background-color: rgba(255, 69, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .navbar .nav-space {
+            margin-right: auto;
+        }
+
         .services-container {
             max-width: 900px;
-            margin: 50px auto;
+            margin: 100px auto; /* Adjusted to avoid overlap with navbar */
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
@@ -91,6 +140,19 @@
     </style>
 </head>
 <body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="Whelmed.html"><img src="logo.jpeg" alt="Whelmed Logo"></a>
+        <span class="whelmed">Whelmed</span>
+        <span class="nav-space"></span>
+        <a href="Whelmed.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="WhelmedBurrow.html">Appointment</a>
+        <a href="blog.html">Blog</a>
+        <a href="donate.html">Donate</a>
+        <a href="contact.html">Contact</a>
+    </div>
 
     <div class="services-container">
         <h1>Our Services</h1>
